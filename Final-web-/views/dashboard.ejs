@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="/styles.css">
+    <!-- Add Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* CSS for carousel images */
+        .carousel-item img {
+            max-height: 300px;
+            display: block;
+            margin: 0 auto; /* Align images in center */
+        }
+    </style>
+</head>
+<body>
+<header>
+    <h1>Welcome to the Dashboard</h1>
+</header>
+<nav>
+    <a href="/location">Location</a>
+    <a href="/timezone">Timezone</a>
+    <a href="/random">Random User</a>
+    <a href="/logout">Logout</a>
+</nav>
+
+<main class="center-content">
+    <% if (items.length > 0) { %>
+    <div class="container">
+        <h2>Your Items</h2>
+
+        <div id="demo" class="carousel slide" data-ride="carousel">
+
+            <!-- Indicators -->
+            <ul class="carousel-indicators">
+                <% items.forEach((item, index) => { %>
+                    <li data-target="#demo" data-slide-to="<%= index %>" class="<%= index === 0 ? 'active' : '' %>"></li>
+                <% }); %>
+            </ul>
+
+            <!-- The slideshow -->
+            <div class="carousel-inner">
+                <% items.forEach((item, index) => { %>
+                    <div class="carousel-item <%= index === 0 ? 'active' : '' %>">
+                        <img src="<%= item.picture1 %>" alt="Los Angeles">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h5><%= item.names %></h5>
+                            <p><%= item.descriptions %></p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="<%= item.picture2 %>" alt="Chicago">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h5><%= item.names %></h5>
+                            <p><%= item.descriptions %></p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="<%= item.picture3 %>" alt="New York">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h5><%= item.names %></h5>
+                            <p><%= item.descriptions %></p>
+                        </div>
+                    </div>
+                <% }); %>
+            </div>
+
+
+            <!-- Left and right controls -->
+            <a class="carousel-control-prev" href="#demo" data-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+            </a>
+            <a class="carousel-control-next" href="#demo" data-slide="next">
+                <span class="carousel-control-next-icon"></span>
+            </a>
+
+        </div>
+        </div>
+    <% } else { %>
+        <p>No items found.</p>
+    <% } %>
+</main>
+<footer style="text-align: center; margin-top: 20px;">
+    <p>Lorem</p>
+</footer>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
